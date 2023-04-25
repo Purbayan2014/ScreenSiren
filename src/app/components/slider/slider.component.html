@@ -4,27 +4,30 @@
 
 <!-- slider container -->
 <div class="slider">
-  <!-- slides containing each movies -->
-  <div class="slide" *ngFor="let item of items">
-    <!-- slide containing movie bgs -->
-    <div class="slide-bg">
-      <img class="slide-bg-image" src="https://image.tmdb.org/t/p/original{{ item.backdrop_path }}" alt="" />
-      <!-- info about the movie -->
-      <div class="slide-pane">
-        <h2 class="name">{{ item.title }}</h2>
-        <div class="meta">
-          <div class="info">
-            <span class="rating">
-              <span class="app-icon">star</span><span class="rating-value">{{ item.vote_average }}/10</span>
-            </span>
-            <span>{{ item.vote_count }}</span>
-            <span>{{ item.release_date | date : 'yyyy' }}</span>
+  <!-- ng container for iteration of the movies array -->
+  <ng-container *ngFor="let item of items; let i = index">
+    <div class="slide" *ngIf="i == currentSlideIndex" @slideFade>
+      <!-- slide containing movie bgs -->
+      <div class="slide-bg">
+        <img class="slide-bg-image" src="https://image.tmdb.org/t/p/original{{ item.backdrop_path }}" alt="" />
+        <!-- info about the movie -->
+        <div class="slide-pane">
+          <h2 class="name">{{ item.title }}</h2>
+          <div class="meta">
+            <div class="info">
+              <span class="rating">
+                <span class="app-icon">star</span><span class="rating-value">{{ item.vote_average }}/10</span>
+              </span>
+              <span>{{ item.vote_count }}</span>
+              <span>{{ item.release_date | date : 'yyyy' }}</span>
+            </div>
           </div>
-        </div>
-        <div class="desc mt-6">
-          {{ item.overview }}
+          <div class="desc mt-6">
+            {{ item.overview }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+  <!-- slides containing each movies -->
 </div>
