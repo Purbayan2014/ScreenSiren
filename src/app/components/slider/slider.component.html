@@ -1,26 +1,28 @@
 <!-- https://image.tmdb.org/t/p/w500/ -->
 
+<pre>{{ items | json }}</pre>
+
 <!-- slider container -->
 <div class="slider">
   <!-- slides containing each movies -->
-  <div class="slide">
+  <div class="slide" *ngFor="let item of items">
     <!-- slide containing movie bgs -->
     <div class="slide-bg">
-      <img class="slide-bg-image" src="https://image.tmdb.org/t/p/original/lWqjXgut48IK5f5IRbDBAoO2Epp.jpg" alt="" />
+      <img class="slide-bg-image" src="https://image.tmdb.org/t/p/original{{ item.backdrop_path }}" alt="" />
       <!-- info about the movie -->
       <div class="slide-pane">
-        <h2 class="name">The Super Mario Bros. Movie</h2>
+        <h2 class="name">{{ item.title }}</h2>
         <div class="meta">
           <div class="info">
-            <span class="rating"> <span class="app-icon">star</span><span class="rating-value">7.5/10</span> </span>
-            <span>463 reviews</span>
-            <span>2023</span>
+            <span class="rating">
+              <span class="app-icon">star</span><span class="rating-value">{{ item.vote_average }}/10</span>
+            </span>
+            <span>{{ item.vote_count }}</span>
+            <span>{{ item.release_date }}</span>
           </div>
         </div>
         <div class="desc mt-6">
-          While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported
-          down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks
-          on an epic quest to find Luigi
+          {{ item.overview }}
         </div>
       </div>
     </div>
