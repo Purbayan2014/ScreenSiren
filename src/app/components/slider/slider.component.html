@@ -1,6 +1,6 @@
 <!-- https://image.tmdb.org/t/p/w500/ -->
 
-<pre>{{ items | json }}</pre>
+<!-- <pre>{{ items | json }}</pre> -->
 
 <!-- slider container -->
 <div class="slider">
@@ -18,7 +18,7 @@
               <span class="app-icon">star</span><span class="rating-value">{{ item.vote_average }}/10</span>
             </span>
             <span>{{ item.vote_count }}</span>
-            <span>{{ item.release_date }}</span>
+            <span>{{ item.release_date | date : 'yyyy' }}</span>
           </div>
         </div>
         <div class="desc mt-6">
