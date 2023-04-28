@@ -72,4 +72,29 @@
         </div>
     </p-tabPanel>
 </p-tabView>
+<!-- movie credits -->
+<p-carousel [numVisible]="5" *ngIf="movieCredits" [value]="movieCredits.cast">
+    <ng-template let-actor pTemplate="item">
+        <div class="actor">
+            <img [src]="imagesSizes.medium + actor.profile_path" alt="">
+            <span>{{actor.name}}</span>
+        </div>
+    </ng-template>
+</p-carousel>
+<!-- similar movies -->
+<div class="container">
+    <h2>Similar Movies:</h2>
+    <div class="grid">
+      <div class="col-6 md:col-3 lg:col-3" *ngFor="let movieSimilar of moviesSimilar">
+        <app-movie-item [itemData]="movieSimilar"></app-movie-item>
+      </div>
+    </div>
+    <div>
+      <p-paginator
+        [rows]="20"
+        [totalRecords]="10000"
+        (onPageChange)="paginateSimilar(movie.id.toString(), $event)"
+      ></p-paginator>
+    </div>
+  </div>
 </ng-container>

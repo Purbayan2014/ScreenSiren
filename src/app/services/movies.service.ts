@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { TvDto } from '../models/tv';
 import { Movie }  from '../models/movie';
 import { MovieVideoDto } from '../models/movie';
+import { MovieCredits } from '../models/movie';
 
 
 @Injectable({
@@ -27,6 +28,17 @@ export class MoviesService {
     );
   }
 
+  getMovieCredits(id: string) {
+    return this.http.get<MovieCredits>(`${this.baseUrl}/movie/${id}/credits?api_key=${environment.moviedbapi}`);
+  }
+
+  searchSimilarMovies(id: string, page: number) {
+    return this.http.get<MovieDto>(`${this.baseUrl}/movie/${id}/similar?page=${page}&api_key=${environment.moviedbapi}`).pipe(
+      switchMap((res) => {
+        return of(res.results);
+      })
+    );
+  }
 
   getMovie(id: string) {
     return this.http.get<Movie>(`${this.baseUrl}/movie/${id}?api_key=${environment.moviedbapi}`);

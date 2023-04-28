@@ -18,10 +18,13 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SameSiteInterceptor } from '../app/same-site-interceptor.interceptor';
 import { ImageModule } from 'primeng/image';
+import { CarouselModule } from 'primeng/carousel';
+
+
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent, VideoEmbedComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule], 
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule, CarouselModule], 
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
