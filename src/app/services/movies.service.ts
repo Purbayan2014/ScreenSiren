@@ -5,6 +5,7 @@ import { MovieDto } from '../models/movie';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { TvDto } from '../models/tv';
+import { Movie }  from '../models/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class MoviesService {
   }
 
 
+  getMovie(id: string) {
+    return this.http.get<Movie>(`${this.baseUrl}/movie/${id}?api_key=${environment.moviedbapi}`);
+  }
+  
   searchMovies(page: number) {
     return this.http.get<TvDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${environment.moviedbapi}`).pipe(
       switchMap((res) => {
