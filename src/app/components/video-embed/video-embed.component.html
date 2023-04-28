@@ -1,0 +1,24 @@
+<ng-container [ngSwitch]="site">
+  <ng-container *ngSwitchCase="'YouTube'">
+    <iframe
+    width="560"
+    height="315"
+    [src]="videoUrl"
+    [title]="title"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    ></iframe>
+  </ng-container>
+  <ng-container *ngSwitchCase="'Vimeo'"></ng-container>
+</ng-container>
+
+<!-- <iframe
+width="560"
+height="315"
+[src]="videoUrl"
+[title]="title"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen
+></iframe> -->

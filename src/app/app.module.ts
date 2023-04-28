@@ -14,11 +14,21 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { PaginatorModule } from 'primeng/paginator';
 import { MovieComponent } from './pages/movie/movie.component';
 import { TabViewModule } from 'primeng/tabview';
+import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SameSiteInterceptor } from '../app/same-site-interceptor.interceptor';
+import { ImageModule } from 'primeng/image';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule], 
-  providers: [],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent, VideoEmbedComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule], 
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SameSiteInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

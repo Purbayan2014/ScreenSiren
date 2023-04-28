@@ -42,4 +42,12 @@ export interface MovieVideoDto {
 export interface MovieVideo {
   site : string;
   key :  string;
+  title: string;
+}
+
+
+export interface MovieImages {
+  backdrops : {
+    file_path : string;
+  }[]
 }
