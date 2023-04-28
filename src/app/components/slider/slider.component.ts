@@ -19,13 +19,17 @@ import { Movie } from 'src/app/models/movie';
 export class SliderComponent implements OnInit {
   // adding a input field to fetch the list of movies
   @Input() items: Movie[] = [];
+  // banner 
+  @Input() isBanner: boolean = false;
   // incrementer
   currentSlideIndex: number = 0;
 
   ngOnInit(): void {
+    if(!this.isBanner){
     // keep on increasing the currentslide index so that each 5 sec we can render a different movie
     setInterval(() => {
       this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
     }, 5000);
+   }
   }
-}
+ }
