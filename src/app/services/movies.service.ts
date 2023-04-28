@@ -8,6 +8,7 @@ import { TvDto } from '../models/tv';
 import { Movie }  from '../models/movie';
 import { MovieVideoDto } from '../models/movie';
 import { MovieCredits } from '../models/movie';
+import {  GenresDto  } from '../models/genre';
 
 
 @Injectable({
@@ -50,6 +51,26 @@ export class MoviesService {
         return of(res.results);
       })
     );
+  }
+
+  getMoviesGenres() {
+    return this.http.get<GenresDto>(`${this.baseUrl}/genre/movie/list?api_key=${environment.moviedbapi}`).pipe(
+      switchMap((res) => {
+        return of(res.genres);
+      })
+    );
+  }
+
+  getMoviesByGenre(genreId: string, pageNumber: number) {
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${environment.moviedbapi}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
   }
 
   searchMovies(page: number) {

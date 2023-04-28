@@ -19,11 +19,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SameSiteInterceptor } from '../app/same-site-interceptor.interceptor';
 import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
+import { GenresComponent } from './pages/genres/genres.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent, VideoEmbedComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent, VideoEmbedComponent, GenresComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule, CarouselModule], 
   providers: [
     {

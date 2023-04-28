@@ -21,6 +21,10 @@ export interface Movie {
   status : string;
 }
 
+export interface Genre {
+  id: number;
+  name: string;
+}
 
 export interface MovieDto {
   page: number;
@@ -29,10 +33,7 @@ export interface MovieDto {
   total_pages: number;
 }
 
-export interface Genre {
-  id: number;
-  name: string;
-}
+
 
 export interface MovieVideoDto {
     id : number;
@@ -58,3 +59,4 @@ export interface MovieCredits {
     profile_path : string;
   }[];
 }
+
