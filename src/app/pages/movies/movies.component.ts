@@ -14,11 +14,13 @@ import { take } from 'rxjs/operators';
 export class MoviesComponent implements OnInit {
 
     movies : Movie[] = [];
-    genreId: string | null = "";
+    genreId: string | null = null;
+    searchValue : string | null  = null;
 
     constructor(private moviesService : MoviesService, private route:ActivatedRoute ) { }
 
     ngOnInit() : void {
+    
       // take the first request from /movies/genreId
        this.route.params.pipe(take(1)).subscribe(({genreId})=>{
           if(genreId) {
@@ -38,10 +40,8 @@ export class MoviesComponent implements OnInit {
       });
     }
 
-    getPagedMovies(page: number) {
-      // every time a new page number is provided we generate a new movies item 
-      // to the array 
-      this.moviesService.searchMovies(page).subscribe( (movies) => {
+    getPagedMovies(page: number, searchKeyword?: string) {
+      this.moviesService.searchMovies(page, searchKeyword).subscribe((movies) => {
         this.movies = movies;
       });
     }
@@ -53,8 +53,20 @@ export class MoviesComponent implements OnInit {
       if (this.genreId) {
         this.getMoviesByGenre(this.genreId, pageNumber);
       } else {
-        this.getPagedMovies(pageNumber);
+        if (this.searchValue) {
+          this.getPagedMovies(pageNumber, this.searchValue);
+        } else {
+          this.getPagedMovies(pageNumber);
+        }
       }
   
+    }
+
+
+    searchChanged() {
+      // console.log(this.searchValue);
+      if(this.searchValue) {
+        this.getPagedMovies(1, this.searchValue);
+      }
     }
 }

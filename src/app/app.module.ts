@@ -20,12 +20,12 @@ import { SameSiteInterceptor } from '../app/same-site-interceptor.interceptor';
 import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
 import { GenresComponent } from './pages/genres/genres.component';
-
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent, VideoEmbedComponent, GenresComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule, CarouselModule], 
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule, ImageModule, CarouselModule, InputTextModule], 
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
