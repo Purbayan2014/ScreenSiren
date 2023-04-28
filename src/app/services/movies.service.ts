@@ -6,6 +6,8 @@ import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { TvDto } from '../models/tv';
 import { Movie }  from '../models/movie';
+import { MovieVideoDto } from '../models/movie';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +31,15 @@ export class MoviesService {
   getMovie(id: string) {
     return this.http.get<Movie>(`${this.baseUrl}/movie/${id}?api_key=${environment.moviedbapi}`);
   }
-  
+
+  getMovieVideos(id : string) {
+    return this.http.get<MovieVideoDto>(`${this.baseUrl}/movie/${id}/videos?api_key=${environment.moviedbapi}`).pipe(
+      switchMap((res) => {
+        return of(res.results);
+      })
+    );
+  }
+
   searchMovies(page: number) {
     return this.http.get<TvDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${environment.moviedbapi}`).pipe(
       switchMap((res) => {
