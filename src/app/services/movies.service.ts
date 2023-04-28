@@ -24,6 +24,16 @@ export class MoviesService {
     );
   }
 
+
+  searchMovies(page: number) {
+    return this.http.get<TvDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${environment.moviedbapi}`).pipe(
+      switchMap((res) => {
+        return of(res.results);
+      })
+    );
+  }
+
+
   getTvs(type: string = 'latest', count: number = 12) {
     return this.http.get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${environment.moviedbapi}`).pipe(
       switchMap((res) => {
