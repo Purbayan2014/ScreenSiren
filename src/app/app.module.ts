@@ -13,11 +13,11 @@ import { ItemBannerComponent } from './components/item-banner/item-banner.compon
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { MovieComponent } from './pages/movie/movie.component';
-
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, MoviesComponent, SliderComponent, ItemBannerComponent, MovieItemComponent, MovieComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule], 
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule, TabViewModule], 
   providers: [],
   bootstrap: [AppComponent]
 })
