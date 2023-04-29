@@ -1,35 +1,33 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'video-embed',
-  templateUrl: './video-embed.component.html',
-  styleUrls: ['./video-embed.component.scss']
+	selector: 'video-embed',
+	templateUrl: './video-embed.component.html',
+	styleUrls: ['./video-embed.component.scss']
 })
 export class VideoEmbedComponent implements OnInit {
-  @Input() site: string = 'Youtube';
-  @Input() key: string | null = null;
-  @Input() title: string | null = null;
-  videoUrl : SafeResourceUrl = '';
+	@Input() site: string = 'YouTube';
 
-  constructor(private sanitizer: DomSanitizer) { }
+	@Input() key: string | null = '';
 
-  ngOnInit(): void {
+	videoUrl: SafeResourceUrl = '';
 
-    switch(this.site){
-      case 'YouTube': 
-        this.videoUrl = this.getSafeUrl('https://www.youtube.com/embed/' + this.key);
-        break;
-      case 'Vimeo':
-        this.videoUrl = this.getSafeUrl('https://www.vimeo.com/embed/' + this.key);
-        break;
-    }
+	constructor(private sanitizer: DomSanitizer) {}
 
+	ngOnInit(): void {
+		switch (this.site) {
+			case 'YouTube':
+				this.videoUrl = this.getSafeUrl('https://www.youtube.com/embed/' + this.key);
+				break;
 
-    
-  }
-  
-  getSafeUrl(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+			case 'Vimeo':
+				this.videoUrl = this.getSafeUrl('https://player.vimeo.com/video/' + this.key);
+				break;
+		}
+	}
+
+	getSafeUrl(url: string) {
+		return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+	}
 }

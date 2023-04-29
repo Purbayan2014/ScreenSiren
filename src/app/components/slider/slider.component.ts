@@ -1,35 +1,26 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie';
+import { IMAGES_SIZES } from '../../constants/images-sizes';
+import { Item } from '../item/item';
 
 @Component({
-  selector: 'slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
-  animations: [
-    // type of animations
-    trigger('slideFade', [
-      // disappers at the end
-      state('void', style({ opacity: 0 })),
-      // bidirectional time from void state to animated state
-      transition('void <=> *', [animate('1s')])
-    ])
-  ]
+	selector: 'slider',
+	templateUrl: './slider.component.html',
+	styleUrls: ['./slider.component.scss'],
+	animations: [trigger('slideFade', [state('void', style({ opacity: 0 })), transition('void <=> *', [animate('1s')])])]
 })
 export class SliderComponent implements OnInit {
-  // adding a input field to fetch the list of movies
-  @Input() items: Movie[] = [];
-  // banner 
-  @Input() isBanner: boolean = false;
-  // incrementer
-  currentSlideIndex: number = 0;
+	@Input() items: Item[] = [];
+	@Input() isBanner: boolean = false;
+	currentSlideIndex: number = 0;
 
-  ngOnInit(): void {
-    if(!this.isBanner){
-    // keep on increasing the currentslide index so that each 5 sec we can render a different movie
-    setInterval(() => {
-      this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
-    }, 5000);
-   }
-  }
- }
+	readonly imageSizes = IMAGES_SIZES;
+
+	ngOnInit(): void {
+		if (!this.isBanner) {
+			setInterval(() => {
+				this.currentSlideIndex = ++this.currentSlideIndex % this.items.length; //21%20=1 | 22%20=2
+			}, 4500);
+		}
+	}
+}

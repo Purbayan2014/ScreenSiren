@@ -1,33 +1,23 @@
-<!-- https://image.tmdb.org/t/p/w500/ -->
-
-<!-- <pre>{{ items | json }}</pre> -->
-
-<!-- slider container -->
 <div class="slider">
-  <!-- ng container for iteration of the movies array -->
-  <ng-container *ngFor="let item of items; let i = index">
-    <div class="slide" *ngIf="i == currentSlideIndex" @slideFade>
-      <!-- slide containing movie bgs -->
-      <div class="slide-bg">
-        <img class="slide-bg-image" src="https://image.tmdb.org/t/p/original{{ item.backdrop_path }}" alt="" />
-        <!-- info about the movie -->
-        <div class="slide-pane">
-          <h2 class="name">{{ item.title }}</h2>
-          <div class="meta">
-            <div class="info">
-              <span class="rating">
-                <span class="app-icon">star</span><span class="rating-value">{{ item.vote_average }}/10</span>
-              </span>
-              <span>{{ item.vote_count }}</span>
-              <span>{{ item.release_date | date : 'yyyy' }}</span>
+    <ng-container *ngFor="let item of items; let i = index">
+        <div class="slide" *ngIf="i==currentSlideIndex" @slideFade>
+            <div class="slide-bg">
+                <img class="slide-bg-image" [src]=" imageSizes.large + item.backdrop_path" [alt]="item.backdrop_path">
             </div>
-          </div>
-          <div class="desc mt-6">
-            {{ item.overview }}
-          </div>
+            <div class="slide-pane">
+                <h2 class="name">{{ item.title || item.name }}</h2>
+                <div class="meta">
+                    <div class="info">
+                        <span class="rating"><span class="app-icon">star</span><span
+                                class="rating-value">{{item.vote_average}}</span>/10</span>
+                        <span>{{ item.vote_count }} Reviews</span>
+                        <span>{{ item.release_date | date: 'yyyy' || item.first_air_date | date: 'yyyy'  }}</span>
+                    </div>
+                </div>
+                <div class="desc mt-6">
+                    {{ item.overview }}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </ng-container>
-  <!-- slides containing each movies -->
+    </ng-container>
 </div>

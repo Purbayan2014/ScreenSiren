@@ -11,7 +11,9 @@ describe('SliderComponent', () => {
       declarations: [ SliderComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(SliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

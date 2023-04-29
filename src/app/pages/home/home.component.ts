@@ -1,45 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { mapTvShowToItem } from '../../models/tvshow';
+import { mapMovieToItem } from '../../models/movie';
 import { MoviesService } from '../../services/movies.service';
-import { Movie } from '../../models/movie';
-import { Tv } from '../../models/tv';
-
+import { TvshowsService } from '../../services/tvshows.service';
+import { Item } from '../../components/item/item';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
-  popularMovies: Movie[] = [];
-  upcomingMovies: Movie[] = [];
-  topRatedMovies: Movie[] = [];
-  popularTvShows: Tv[] = [];
+	popularMovies: Item[] = [];
+	topRatedMovies: Item[] = [];
+	upcomingMovies: Item[] = [];
+	popularTvShows: Item[] = [];
 
-  constructor(private moviesService: MoviesService) {}
+	constructor(private moviesService: MoviesService, private tvShowsService: TvshowsService) {}
 
-  ngOnInit(): void {
-    // return the observable
-    // .subscribe means to wait for the function to fetch the data
-    // from the rest api
+	ngOnInit(): void {
+		this.moviesService.getMovies('popular').subscribe((movies) => {
+			this.popularMovies = movies.map((movie) => mapMovieToItem(movie)); // response.results
+		});
 
-    // this.moviesServices.getMovies().subscribe((response: any) => {
-    //   this.movies = response.results;
-    //   console.log(this.movies);
-    // });
+		this.moviesService.getMovies('top_rated').subscribe((movies) => {
+			this.topRatedMovies = movies.map((movie) => mapMovieToItem(movie));
+		});
 
-    this.moviesService.getMovies('popular').subscribe((movies) => {
-      this.popularMovies = movies;
-    });
-    this.moviesService.getMovies('top_rated').subscribe((movies) => {
-      this.topRatedMovies = movies;
-    });
-    this.moviesService.getMovies('upcoming').subscribe((movies) => {
-      this.upcomingMovies = movies;
-    });
-    this.moviesService.getTvs('popular').subscribe((tvShows) => {
-      this.popularTvShows = tvShows;
-    });
+		this.moviesService.getMovies('upcoming').subscribe((movies) => {
+			this.upcomingMovies = movies.map((movie) => mapMovieToItem(movie));
+		});
 
-  }
+		this.tvShowsService.getTvShows('popular').subscribe((tvshows) => {
+			this.popularTvShows = tvshows.map((tvshow) => mapTvShowToItem(tvshow));
+		});
+	}
 }
