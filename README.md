@@ -1,27 +1,56 @@
 # ScreenSiren
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+ScreenSiren is a web application built using Angular and PrimeNG components, which uses the TMDB API to display information about trending and popular TV shows and movies. Users can view details about each TV show and movie, including videos and search for them by name or genre.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- View trending and popular TV shows and movies
+- View details about each TV show and movie, including videos
+- Search for TV shows and movies by name or genre
 
-## Code scaffolding
+## Tech Stack Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ScreenSiren uses the following technologies:
 
-## Build
+- Angular
+- TypeScript
+- PrimeNG UI 
+- PrimeFlex CSS
+- TMDB Movies API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## API Keys Needed for running Locally 
 
-## Running unit tests
+If you wish to run the animation locally or debug it first request for a api at [TMDB Movies API](https://www.themoviedb.org/documentation/api) and then create three files
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  - .env.staging
+  - .env.production
+  - .env.developement
+  - .env
+  
+and insert your api key there like this 
 
-## Running end-to-end tests
+`MOVIE_DB_API_KEY="<your-api-key>"`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## How to Run Locally
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone the repository
+  
+   `git clone https://github.com/Purbayan2014/ScreenSiren.git`
+
+2. Install dependencies
+  
+   `npm install --legacy-peer-deps -save`
+
+3. Run the application
+
+    `ng serve`
+
+4. Open your browser and go to http://localhost:4200/
+
+## Credits
+
+- Angular: https://angular.io/
+- PrimeNG: https://www.primefaces.org/primeng/
+- TMDB Movies API: https://www.themoviedb.org/documentation/api
+- PrimFlex : https://www.primefaces.org/primeflex/
