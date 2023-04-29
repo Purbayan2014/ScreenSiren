@@ -6,7 +6,6 @@
     "start:prod": "APP_ENV=production ng serve",
     "start:dev": "APP_ENV=development ng serve",
     "start:staging": "APP_ENV=staging ng serve",
-    "build": "ng build --prod",
     "build:prod": "APP_ENV=production ng build --prod",
     "build:dev": "APP_ENV=development ng build --prod",
     "build:staging": "APP_ENV=staging ng build --prod",
