@@ -7,7 +7,7 @@
     "start:dev": "APP_ENV=development ng serve",
     "start:staging": "APP_ENV=staging ng serve",
     "start": "NODE_OPTIONS=--legacy-peer-deps ng serve",
-    "build": "NODE_OPTIONS=--legacy-peer-deps ng build --prod"
+    "build": "NODE_OPTIONS=--legacy-peer-deps ng build --prod",
     "build:prod": "APP_ENV=production ng build --prod",
     "build:dev": "APP_ENV=development ng build --prod",
     "build:staging": "APP_ENV=staging ng build --prod",
