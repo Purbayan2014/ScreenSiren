@@ -5,8 +5,10 @@ function getConfig() {
     return '.env.production';
   } else if (process.env.APP_ENV === 'development') {
     return '.env.development';
-  } else {
+  } else if (process.env.APP_ENV == 'staging') {
     return '.env.staging';
+  } else {
+    return '.env';
   }
 }
 
