@@ -1,6 +1,7 @@
 # ScreenSiren
 
-ScreenSiren is a web application built using Angular and PrimeNG components, which uses the TMDB API to display information about trending and popular TV shows and movies. Users can view details about each TV show and movie, including videos and search for them by name or genre.
+ScreenSiren is a cutting-edge web application that lets users easily explore trending and popular TV shows and movies. Powered by Angular and PrimeNG components, ScreenSiren provides a sleek and intuitive interface for discovering new entertainment. With comprehensive details on each show and movie, including videos, ScreenSiren makes it easy to stay up-to-date on your favorite content. And with robust search functionality, users can easily find TV shows and movies by name or genre. Showcase your passion for entertainment and your skills as a developer with ScreenSiren on your resume today!
+
 
 ## Features
 
